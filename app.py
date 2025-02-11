@@ -93,15 +93,11 @@ class CricketWebBot:
                     
                     messages=[
                         {
-                            "role":"user",
-                            "content":query
-                        },
-                        {
                             "role": "system",
                             "content": (
-                               "The below is some data regarding cricket team rankings. display it in proper format\n"
+                               "The below is some data regarding cricket team rankings.\n"
                                "The format of the data is as : | Ranking | Country | Weighted Matches | Points | Rating | Format | Gender |\n"
-                               "Just summarize what you understand from it"
+                               f"Based on the query : {query} ; give answer"
                             ),
                         },
                         {"role": "user", "content": explanation},
@@ -418,4 +414,4 @@ def ask_question():
     return jsonify({"answer": response})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000, debug=True)
